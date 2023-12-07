@@ -15,10 +15,17 @@ The `local_search` function implements a basic local search algorithm, specifica
 To use the script, create an instance of the `Queen` class by providing the initial queen locations in the form of a list of coordinates. Then, call the `add_queen` method to initialize the chessboard. Finally, call the `local_search` method to apply the local search algorithm and find a solution.
 
 ```python
-# Example Usage
-L = [[2, 0], [1, 1], [2, 2], [1, 3]]  # 4 Queens Locations
-N = len(L)
-q = Queen(L, N)
-q.add_queen()
-cur_cost, _, _ = calculate_cost(q.queen_loc)
-local_search(q.queen_loc, cur_cost)
+# Example usage:
+queen_locations = [[2, 0], [1, 1], [2, 2], [1, 3]]
+queen_instance = Queen(queen_locations)
+
+print("Initial State:")
+for row in queen_instance.chess_board:
+    print(row)
+
+initial_cost, _, _ = calc_cost(queen_instance.state)
+hill_climbing(queen_instance, initial_cost)
+
+print("Final State:")
+for row in queen_instance.chess_board:
+    print(row)
